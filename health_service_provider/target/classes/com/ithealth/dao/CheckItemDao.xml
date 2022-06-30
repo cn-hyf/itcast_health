@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ithealth.dao.CheckItemDao"> <!--namespace就是dao接口的完整路径-->
+    <!--插入检查项；id="dao接口的方法名"；没有返回值，所以不用写resultType-->
+    <insert id="add" parameterType="com.ithealth.pojo.CheckItem">
+        insert into t_checkitem(code,name,sex,age,price,type,remark,attention) values (#{code},#{name},#{sex},#{age},#{price},#{type},#{remark},#{attention})
+    </insert>
+
+    <!--查询检查项；id="dao接口的方法名"；有返回值，resultType指定返回值的类型。模糊查询：concat('%',#{queryString},'%')解决了SQL注入且能在配置文件中写"%"通配符的问题，完美实现了模糊查询-->
+    <select id="selectByCondition" parameterType="string" resultType="com.ithealth.pojo.CheckItem">
+        select * from t_checkitem
+        <if test="_parameter != null">   <!--查询的参数可能为空，所以使用动态sql拼接-->
+            where code like concat('%',#{queryString},'%') or name like concat('%',#{queryString},'%')
+        </if>
+    </select>
+
+    <!--根据检查项id统计数据量-->
+    <select id="findCountByCheckItemId" parameterType="int" resultType="long">
+        select count(*) from t_checkgroup_checkitem where checkitem_id = #{checkitem_id}
+    </select>
+
+    <!--删除检查项-->
+    <delete id="deleteById" parameterType="int">
+        delete from t_checkitem where id = #{id}
+    </delete>
+
+    <update id="edit" parameterType="com.ithealth.pojo.CheckItem">
+        update t_checkitem
+        <set>
+            <if test="name != null">
+               name = #{name},
+            </if>
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+            <if test="code != null">
+                code = #{code},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="price != null">
+                 price = #{price},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="attention != null">
+                attention = #{attention},
+            </if>
+            <if test="remark != null">
+                remark = #{remark},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--根据id查询一条检查项数据-->
+    <select id="findById" parameterType="int" resultType="com.ithealth.pojo.CheckItem">
+        select * from t_checkitem where id = #{id}
+    </select>
+</mapper>
