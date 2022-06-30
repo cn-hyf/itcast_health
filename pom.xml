@@ -12,7 +12,6 @@
         <module>health_interface</module>
         <module>health_service_provider</module>
         <module>health_backend</module>
-        <module>health_common</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
