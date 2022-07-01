@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * 检查项管理
  */
@@ -34,7 +36,7 @@ public class CheckItemController {
         return new Result(true,MessageConstant.ADD_CHECKGROUP_SUCCESS);
     }
 
-    //检查项分页查询
+    //分页和模糊查询检查项
     @RequestMapping("/findPage")
     public PageResult findPage(@RequestBody QueryPageBean queryPageBean){
         PageResult pageResult = checkItemService.pageQuery(queryPageBean);
@@ -74,6 +76,18 @@ public class CheckItemController {
         try {
             CheckItem checkItem = checkItemService.findById(id);
             return new Result(true,MessageConstant.QUERY_CHECKITEM_SUCCESS,checkItem);
+        }catch (Exception e){//服务调用失败
+            e.printStackTrace();
+            return new Result(false,MessageConstant.QUERY_CHECKITEM_FAIL);
+        }
+    }
+
+    //查询全部检查项，不分页
+    @RequestMapping("/findAll")
+    public Result findAll(){
+        try {
+            List<CheckItem> list = checkItemService.findAll();
+            return new Result(true,MessageConstant.QUERY_CHECKITEM_SUCCESS,list);
         }catch (Exception e){//服务调用失败
             e.printStackTrace();
             return new Result(false,MessageConstant.QUERY_CHECKITEM_FAIL);

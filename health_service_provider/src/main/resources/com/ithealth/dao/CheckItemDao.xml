@@ -7,7 +7,7 @@
         insert into t_checkitem(code,name,sex,age,price,type,remark,attention) values (#{code},#{name},#{sex},#{age},#{price},#{type},#{remark},#{attention})
     </insert>
 
-    <!--查询检查项；id="dao接口的方法名"；有返回值，resultType指定返回值的类型。模糊查询：concat('%',#{queryString},'%')解决了SQL注入且能在配置文件中写"%"通配符的问题，完美实现了模糊查询-->
+    <!--分页和模糊查询检查项；id="dao接口的方法名"；有返回值，resultType指定返回值的类型。模糊查询：concat('%',#{queryString},'%')解决了SQL注入且能在配置文件中写"%"通配符的问题，完美实现了模糊查询-->
     <select id="selectByCondition" parameterType="string" resultType="com.ithealth.pojo.CheckItem">
         select * from t_checkitem
         <if test="_parameter != null">   <!--查询的参数可能为空，所以使用动态sql拼接-->
@@ -25,6 +25,7 @@
         delete from t_checkitem where id = #{id}
     </delete>
 
+    <!--根据id更新检查项-->
     <update id="edit" parameterType="com.ithealth.pojo.CheckItem">
         update t_checkitem
         <set>
@@ -59,5 +60,10 @@
     <!--根据id查询一条检查项数据-->
     <select id="findById" parameterType="int" resultType="com.ithealth.pojo.CheckItem">
         select * from t_checkitem where id = #{id}
+    </select>
+
+    <!--查询全部检查项，不分页-->
+    <select id="findAll" resultType="com.ithealth.pojo.CheckItem">
+        select * from t_checkitem;
     </select>
 </mapper>

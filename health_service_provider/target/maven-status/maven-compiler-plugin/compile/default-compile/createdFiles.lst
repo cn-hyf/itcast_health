@@ -1,2 +1,4 @@
+com\ithealth\dao\CheckGroupDao.class
 com\ithealth\dao\CheckItemDao.class
 com\ithealth\service\impl\CheckItemServiceImpl.class
+com\ithealth\service\impl\CheckGroupServiceImpl.class
