@@ -93,6 +93,10 @@ public class SetmealServiceImpl implements SetmealService {
     public void deleteById(Integer id) {
         //清理当前套餐组关联的检查组项，操作中间关系表t_setmeal_checkgroup表
         setmealDao.deleteAssocication(id);
+        //还要删除照片，根据照片名称在redis的set集合中删除，然后会有定时任务在七牛云中删除该照片
+        Setmeal setmeal = setmealDao.findById(id);
+        String img = setmeal.getImg();
+        jedisPool.getResource().srem(RedisConstant.SETMEAL_PIC_DB_RESOURCES,img);
         //根据id删除当前套餐组
         setmealDao.deleteById(id);
     }

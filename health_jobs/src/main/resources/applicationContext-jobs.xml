@@ -29,8 +29,8 @@
         <property name="jobDetail" ref="jobDetail"/>
         <!-- 指定触发的时间，基于Cron表达式 -->
         <property name="cronExpression">
-            <value>0 0 2 * * ?</value><!--每天凌晨2点执行任务-->
-<!--            <value>0/10 * * * * ?</value>&lt;!&ndash;开发时测试使用，每隔10s执行一次&ndash;&gt;-->
+<!--            <value>0 0 2 * * ?</value>&lt;!&ndash;每天凌晨2点执行任务&ndash;&gt;-->
+            <value>0/30 * * * * ?</value><!--开发时测试使用，每隔10s执行一次-->
         </property>
     </bean>
     <!-- 注册一个统一的调度工厂，通过这个调度工厂调度任务 -->
