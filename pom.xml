@@ -12,6 +12,7 @@
         <module>health_interface</module>
         <module>health_service_provider</module>
         <module>health_backend</module>
+        <module>health_jobs</module>
     </modules>
     <packaging>pom</packaging>
     <!-- 集中定义依赖版本号 -->
@@ -176,7 +177,7 @@
             <dependency>
                 <groupId>com.qiniu</groupId>
                 <artifactId>qiniu-java-sdk</artifactId>
-                <version>7.2.0</version>
+                <version>7.7.0</version>
             </dependency>
             <!--POI报表-->
             <dependency>

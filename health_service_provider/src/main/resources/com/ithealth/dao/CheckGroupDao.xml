@@ -74,4 +74,8 @@
     <delete id="deleteById">
         delete from t_checkgroup where id = #{id}
     </delete>
+
+    <select id="findAll" resultType="com.ithealth.pojo.CheckGroup">
+        select * from t_checkgroup
+    </select>
 </mapper>

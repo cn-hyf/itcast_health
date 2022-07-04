@@ -21,6 +21,8 @@ public class CheckGroupServiceImpl implements CheckGroupService {
     @Autowired
     private CheckGroupDao checkGroupDao;
 
+
+
     //新增检查组，同时需要让检查组关联检查项
     @Override
     public void add(CheckGroup checkGroup, Integer[] checkitemIds) {
@@ -89,5 +91,11 @@ public class CheckGroupServiceImpl implements CheckGroupService {
         checkGroupDao.deleteAssocication(id);
         //根据id删除当前检查组
         checkGroupDao.deleteById(id);
+    }
+
+    //查询检查组的所有数据，不分页
+    @Override
+    public List<CheckGroup> findAll() {
+        return checkGroupDao.findAll();
     }
 }

@@ -31,5 +31,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.32" level="project" />
+    <orderEntry type="library" name="Maven: redis.clients:jedis:2.9.0" level="project" />
   </component>
 </module>

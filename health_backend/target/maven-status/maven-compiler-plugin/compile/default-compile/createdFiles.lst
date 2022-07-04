@@ -1,2 +1,3 @@
+com\ithealth\controller\SetMealController.class
 com\ithealth\controller\CheckItemController.class
 com\ithealth\controller\CheckGroupController.class

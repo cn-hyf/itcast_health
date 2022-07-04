@@ -20,5 +20,7 @@
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.47" level="project" />
     <orderEntry type="module" module-name="health_common" />
     <orderEntry type="module" module-name="health_interface" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.0.5.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: redis.clients:jedis:2.9.0" level="project" />
   </component>
 </module>
