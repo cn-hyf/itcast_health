@@ -3,4 +3,6 @@ com\ithealth\dao\CheckItemDao.class
 com\ithealth\service\impl\CheckItemServiceImpl.class
 com\ithealth\dao\SetmealDao.class
 com\ithealth\service\impl\SetmealServiceImpl.class
+com\ithealth\service\impl\OrderSettingServiceImpl.class
+com\ithealth\dao\OrderSettingDao.class
 com\ithealth\service\impl\CheckGroupServiceImpl.class
